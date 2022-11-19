@@ -10,14 +10,16 @@ public class CubesBehavior : MonoBehaviour
     [SerializeField] float period = 2f;
     [SerializeField] float _degreesPerSecond = 20f;
     
+    
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         startingPosition = transform.position;
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         float cycles = Time.time / period; 
@@ -33,4 +35,7 @@ public class CubesBehavior : MonoBehaviour
         transform.Rotate(new Vector3(0, _degreesPerSecond, 0) * Time.deltaTime);
 
     }
+   
+
+    
 }

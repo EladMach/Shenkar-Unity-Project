@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public Text percentText;
     public TextMeshProUGUI scoreText;
     public int score;
+    private Animator animator;
  
 
 
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         scoreText.text = "Score: " + 0;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -41,9 +43,12 @@ public class Player : MonoBehaviour
 
         damaged = false;
 
-        GameOver();
+        OnPlayerDeath();
+        StartCoroutine(GameOver());
 
     }
+
+
 
     void TakeDamage(int damage)
     {
@@ -82,14 +87,24 @@ public class Player : MonoBehaviour
         UpdateScore(score);
     }
 
-
-
-    void GameOver()
+    void OnPlayerDeath()
     {
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
+            animator.SetTrigger("OnPlayerDeath");
+        }
+        
+    }
+
+    IEnumerator GameOver()
+    {
+        if (currentHealth <= 0)
+        {
+            yield return new WaitForSeconds(5);
             SceneManager.LoadScene(2);
         }
+        
     }
+    
 
 }
