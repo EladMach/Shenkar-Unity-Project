@@ -15,8 +15,7 @@ public class CubesBehavior : MonoBehaviour
     void Start()
     {
         startingPosition = transform.position;
-        
-        
+
     }
 
     
