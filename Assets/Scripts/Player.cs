@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             if (other.gameObject.tag == "Enemy")
             {
                 TakeDamage(20);
-                percentText.text = currentHealth.ToString() + "%";  
+                percentText.text =            currentHealth.ToString() + "%";  
             }
 
         }
@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             yield return new WaitForSeconds(5);
+            PlayerPrefs.SetInt("highscore", score);
             SceneManager.LoadScene(2);
         }
         
