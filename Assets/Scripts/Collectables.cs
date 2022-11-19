@@ -19,8 +19,9 @@ public class Collectables : MonoBehaviour
         {
             audioSource.clip = collectSound;
             audioSource.Play();
+            Destroy(this.gameObject, audioSource.clip.length);
         }
-        Destroy(this.gameObject);
+        
     }
 
 

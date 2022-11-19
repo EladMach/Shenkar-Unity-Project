@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score;
     private Animator animator;
+    public AudioClip playerDeathSound;
+    public AudioClip playerDamageSound;
+    private AudioSource audioSource;
  
 
 
@@ -27,6 +30,7 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         scoreText.text = "Score: " + 0;
         animator = gameObject.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -62,8 +66,10 @@ public class Player : MonoBehaviour
 
             if (other.gameObject.tag == "Enemy")
             {
+                audioSource.clip = playerDamageSound;
+                audioSource.PlayOneShot(playerDamageSound);
                 TakeDamage(20);
-                percentText.text =            currentHealth.ToString() + "%";  
+                percentText.text = currentHealth.ToString() + "%";  
             }
 
         }
@@ -92,6 +98,7 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             animator.SetTrigger("OnPlayerDeath");
+            audioSource.PlayOneShot(playerDeathSound);
         }
         
     }
@@ -100,7 +107,7 @@ public class Player : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(10);
             PlayerPrefs.SetInt("highscore", score);
             SceneManager.LoadScene(2);
         }

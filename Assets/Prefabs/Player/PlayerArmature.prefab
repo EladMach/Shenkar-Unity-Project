@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 4416926081852918493}
   - component: {fileID: 6245105681897177284}
   - component: {fileID: 393043420}
-  - component: {fileID: 1262412722526461084}
+  - component: {fileID: 4152695100359724563}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1318,7 +1318,9 @@ MonoBehaviour:
   percentText: {fileID: 0}
   scoreText: {fileID: 0}
   score: 0
---- !u!82 &1262412722526461084
+  playerDeathSound: {fileID: 8300000, guid: e5697828636a50845ab048e8e146ff38, type: 3}
+  playerDamageSound: {fileID: 8300000, guid: 730524e341e13d748848c907af850849, type: 3}
+--- !u!82 &4152695100359724563
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1328,16 +1330,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cc477da07a0e95340a4e0638d3853865, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0

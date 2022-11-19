@@ -9,15 +9,13 @@ public class CubesBehavior : MonoBehaviour
     [SerializeField] [Range(0,1)] float movementFactor;
     [SerializeField] float period = 2f;
     [SerializeField] float _degreesPerSecond = 20f;
-    
-    
-    
-    
 
+  
     
     void Start()
     {
         startingPosition = transform.position;
+        
         
     }
 
@@ -37,8 +35,7 @@ public class CubesBehavior : MonoBehaviour
         transform.Rotate(new Vector3(0, _degreesPerSecond, 0) * Time.deltaTime);
 
     }
-   
-   
 
     
+
 }
