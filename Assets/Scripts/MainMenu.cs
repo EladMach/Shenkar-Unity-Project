@@ -8,10 +8,12 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI newGameText;
+    public TextMeshProUGUI highScoreText;
     
     
     void Start()
     {
+        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("highscore");
         StartCoroutine(newGameTextRoutine());  
     }   
     public void LoadGame()

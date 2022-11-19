@@ -94,7 +94,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246247563482333142}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77992daf6718a2447881dcc420b1f480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 0, z: 0}
+  movementVector: {x: 20, y: 0, z: 10}
   movementFactor: 0
-  period: 2
+  period: 10
   _degreesPerSecond: 20
 --- !u!54 &2136099398225930642
 Rigidbody:
