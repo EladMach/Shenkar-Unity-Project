@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour
     
     void Update()
     {
-        ReturnToMainMenu();
+        
     }
 
     IEnumerator GameOverRoutine()
@@ -32,12 +32,15 @@ public class GameOver : MonoBehaviour
         }
     }
 
-    void ReturnToMainMenu()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
+    public void ReturnToMainMenu()
+    { 
             SceneManager.LoadScene(0);
-        }
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("QUIT GAME");
+        Application.Quit(); 
     }
 
 }

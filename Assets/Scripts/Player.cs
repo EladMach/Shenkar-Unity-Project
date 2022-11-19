@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(8);
             PlayerPrefs.SetInt("highscore", score);
             SceneManager.LoadScene(2);
         }
