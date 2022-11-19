@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
     }
 
 
-
     void TakeDamage(int damage)
     {
         damaged = true;
