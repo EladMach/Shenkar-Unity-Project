@@ -11,6 +11,8 @@ public class CubesBehavior : MonoBehaviour
     [SerializeField] float _degreesPerSecond = 20f;
     
     
+    
+    
 
     
     void Start()
@@ -35,6 +37,7 @@ public class CubesBehavior : MonoBehaviour
         transform.Rotate(new Vector3(0, _degreesPerSecond, 0) * Time.deltaTime);
 
     }
+   
    
 
     
