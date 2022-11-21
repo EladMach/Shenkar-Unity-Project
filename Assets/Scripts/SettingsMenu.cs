@@ -6,17 +6,10 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-
-    [SerializeField] Slider volumeSlider;
-
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey("Volume"))
-        {
-            SetVolume(PlayerPrefs.GetFloat("Volume"));
-            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
-        }
-}
+    AudioSource musicAudioSource;
+    AudioSource soundEffectsSource;
+    public AudioClip[] musicAudio; 
+    public AudioClip[] soundEffects;
     public void SetVolume(float volume)
     {
         AudioListener.volume = volume;

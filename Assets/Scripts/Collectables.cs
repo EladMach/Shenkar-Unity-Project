@@ -19,7 +19,6 @@ public class Collectables : MonoBehaviour
             Destroy(this.gameObject);
         }
         
-
     }
 
 
