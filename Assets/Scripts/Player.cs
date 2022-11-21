@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
 {
@@ -17,15 +18,20 @@ public class Player : MonoBehaviour
     public Text percentText;
     public TextMeshProUGUI scoreText;
     public int score;
+    public int highScore;
     private Animator animator;
     public AudioClip playerDeathSound;
     public AudioClip playerDamageSound;
     private AudioSource audioSource;
- 
+    
 
+
+    
+   
 
     void Start()
     {
+        
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         scoreText.text = "Score: " + 0;
@@ -44,9 +50,8 @@ public class Player : MonoBehaviour
         {
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
-
         damaged = false;
-
+        
         OnPlayerDeath();
         StartCoroutine(GameOver());
 
@@ -90,28 +95,34 @@ public class Player : MonoBehaviour
     {
         score += points;
         UpdateScore(score);
+        
     }
+
 
     void OnPlayerDeath()
     {
         if (currentHealth <= 0)
         {
+            PlayerPrefs.SetInt("HighScore", score);
             animator.SetTrigger("OnPlayerDeath");
             audioSource.PlayOneShot(playerDeathSound);
         }
         
+
     }
 
     IEnumerator GameOver()
     {
         if (currentHealth <= 0)
         {
-            yield return new WaitForSeconds(8);
-            PlayerPrefs.SetInt("highscore", score);
+            
+            yield return new WaitForSeconds(5);        
             SceneManager.LoadScene(2);
         }
         
     }
-    
+
+ 
+ 
 
 }

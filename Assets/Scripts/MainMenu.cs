@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,11 +12,18 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     
     
+    
     void Start()
     {
-        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("highscore");
+        
         StartCoroutine(newGameTextRoutine());  
-    }   
+    }
+
+    private void Update()
+    {
+        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore");
+    }
+
     public void LoadGame()
     {
         SceneManager.LoadScene(1);
