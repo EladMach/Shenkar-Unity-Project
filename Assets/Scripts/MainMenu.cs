@@ -15,13 +15,14 @@ public class MainMenu : MonoBehaviour
     
     void Start()
     {
-        
+        highScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
         StartCoroutine(newGameTextRoutine());  
     }
 
     private void Update()
     {
-        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore");
+        
+
     }
 
     public void LoadGame()

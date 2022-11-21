@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class Player : MonoBehaviour
 {
@@ -24,10 +24,9 @@ public class Player : MonoBehaviour
     public AudioClip playerDamageSound;
     private AudioSource audioSource;
     
-
-
     
-   
+
+
 
     void Start()
     {
@@ -51,8 +50,11 @@ public class Player : MonoBehaviour
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         damaged = false;
+
+        
         
         OnPlayerDeath();
+
         StartCoroutine(GameOver());
 
     }
@@ -67,15 +69,14 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
         {
-
             if (other.gameObject.tag == "Enemy")
             {
                 audioSource.clip = playerDamageSound;
                 audioSource.PlayOneShot(playerDamageSound);
                 TakeDamage(20);
+                AddScore(-10);
                 percentText.text = currentHealth.ToString() + "%";  
             }
-
         }
 
     void OnTriggerEnter(Collider other)
@@ -94,8 +95,7 @@ public class Player : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        UpdateScore(score);
-        
+        UpdateScore(score);  
     }
 
 
@@ -103,11 +103,14 @@ public class Player : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            PlayerPrefs.SetInt("HighScore", score);
+            if (PlayerPrefs.GetInt("HighScore") < score) 
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+            }
+
             animator.SetTrigger("OnPlayerDeath");
             audioSource.PlayOneShot(playerDeathSound);
         }
-        
 
     }
 
@@ -115,7 +118,6 @@ public class Player : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            
             yield return new WaitForSeconds(5);        
             SceneManager.LoadScene(2);
         }
