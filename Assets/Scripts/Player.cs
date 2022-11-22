@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
-
+using StarterAssets;
 
 public class Player : MonoBehaviour
 {
@@ -18,23 +18,26 @@ public class Player : MonoBehaviour
     public Text percentText;
     public TextMeshProUGUI scoreText;
     public int score;
+    private int minScore;
     public int highScore;
     private Animator animator;
     public AudioClip playerDeathSound;
     public AudioClip playerDamageSound;
     private AudioSource audioSource;
+    private ThirdPersonController playerController;
     
     
-
-
+    
 
     void Start()
     {
+        playerController = GetComponent<ThirdPersonController>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         scoreText.text = "Score: " + 0;
         animator = gameObject.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        minScore = 0;
     }
 
     void Update()
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
         damaged = true;
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        currentHealth = Mathf.Max(0, currentHealth);
     }
 
 
@@ -72,9 +76,10 @@ public class Player : MonoBehaviour
             {
                 audioSource.clip = playerDamageSound;
                 audioSource.PlayOneShot(playerDamageSound);
-                TakeDamage(20);
-                AddScore(-10);
-                percentText.text = currentHealth.ToString() + "%";  
+                TakeDamage(20); 
+                TakeScore(10);
+                percentText.text = currentHealth.ToString() + "%";
+    
             }
         }
 
@@ -90,14 +95,26 @@ public class Player : MonoBehaviour
 
     public void UpdateScore(int playerScore)
     {
-       scoreText.text = "Score:" + playerScore.ToString();
+        if (score >= minScore)
+        {
+            scoreText.text = "Score:" + playerScore.ToString();
+        }
+
+        score = Mathf.Max(0, score);
+
     }
 
 
     public void AddScore(int points)
-    {
+    {  
         score += points;
-        UpdateScore(score);  
+        UpdateScore(score);
+    }
+
+    public void TakeScore(int substractpoints)
+    {
+        score -= substractpoints;
+        UpdateScore(score);
     }
 
 
@@ -112,6 +129,7 @@ public class Player : MonoBehaviour
 
             animator.SetTrigger("OnPlayerDeath");
             audioSource.PlayOneShot(playerDeathSound);
+            playerController.enabled = false;
         }
 
     }
