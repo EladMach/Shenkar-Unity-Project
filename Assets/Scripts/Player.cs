@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         scoreText.text = "Score: " + 0;
@@ -52,7 +51,6 @@ public class Player : MonoBehaviour
         damaged = false;
 
         
-        
         OnPlayerDeath();
 
         StartCoroutine(GameOver());
@@ -67,6 +65,7 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+
     void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.tag == "Enemy")
@@ -79,6 +78,7 @@ public class Player : MonoBehaviour
             }
         }
 
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Coin")
@@ -87,10 +87,12 @@ public class Player : MonoBehaviour
         }    
     }
 
+
     public void UpdateScore(int playerScore)
     {
        scoreText.text = "Score:" + playerScore.ToString();
     }
+
 
     public void AddScore(int points)
     {
@@ -114,6 +116,7 @@ public class Player : MonoBehaviour
 
     }
 
+
     IEnumerator GameOver()
     {
         if (currentHealth <= 0)
@@ -124,7 +127,5 @@ public class Player : MonoBehaviour
         
     }
 
- 
- 
 
 }
