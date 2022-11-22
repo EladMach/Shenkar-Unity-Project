@@ -19,11 +19,6 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(newGameTextRoutine());  
     }
 
-    private void Update()
-    {
-        
-
-    }
 
     public void LoadGame()
     {
