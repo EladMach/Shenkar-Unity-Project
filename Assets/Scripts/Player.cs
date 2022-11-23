@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     public AudioClip playerDeathSound;
     public AudioClip playerDamageSound;
+    public AudioClip swordSwish;
     private AudioSource audioSource;
     private ThirdPersonController playerController;
     
@@ -145,13 +146,13 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(5);        
             SceneManager.LoadScene(2);
         }
-        
     }
 
     public void PlayerAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.PlayOneShot(swordSwish);
             animator.SetTrigger("PlayerAttack");
             
     }   }
