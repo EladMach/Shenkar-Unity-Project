@@ -5,35 +5,43 @@ using UnityEngine;
 public class CubesBehavior : MonoBehaviour
 {
     Vector3 startingPosition;
-    [SerializeField] Vector3 movementVector;
-    [SerializeField] [Range(0,1)] float movementFactor;
-    [SerializeField] float period = 2f;
-    [SerializeField] float _degreesPerSecond = 20f;
-
-  
     
+    private Player player;
+    public Transform[] waypoints;
+    private int _currentWaypointIndex = 0;
+    private float _speed = 2f;
+    private Rigidbody rb;
+
+   
+
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player_Maria").GetComponent<Player>();
         startingPosition = transform.position;
-
+        
     }
 
-    
+
     void Update()
     {
-        float cycles = Time.time / period; 
-        
-        const float tau = Mathf.PI * 2;  
-        float rawSinWave = Mathf.Sin(cycles * tau);  
 
-        movementFactor = (rawSinWave + 1f) / 2f;
-        
-        Vector3 offset = movementVector * movementFactor;
-        transform.position = startingPosition + offset;
+        Transform wp = waypoints[_currentWaypointIndex];
 
-        transform.Rotate(new Vector3(0, _degreesPerSecond, 0) * Time.deltaTime);
+        if (Vector3.Distance(transform.position, wp.position) < 1f)
+        {
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
+        }
 
-    }
+        if (player.currentHealth == 0)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }    
 
     
 

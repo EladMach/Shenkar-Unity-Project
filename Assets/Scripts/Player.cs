@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void OnPlayerDeath()
+    public void OnPlayerDeath()
     {
         if (currentHealth <= 0)
         {
@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
             animator.SetTrigger("OnPlayerDeath");
             audioSource.PlayOneShot(playerDeathSound);
             playerController.enabled = false;
+            damageImage.enabled = false;
         }
 
     }
