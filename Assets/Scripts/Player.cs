@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
 
         StartCoroutine(GameOver());
 
+        PlayerAttack();
+
     }
 
 
@@ -145,6 +147,13 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    public void PlayerAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("PlayerAttack");
+    }   }
 
 
 }
