@@ -11,6 +11,7 @@ TagManager:
   - Coin3
   - Coin4
   - Radio
+  - Platform
   layers:
   - Default
   - TransparentFX
