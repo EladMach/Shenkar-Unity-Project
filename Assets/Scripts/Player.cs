@@ -153,6 +153,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("PlayerAttack");
+            
     }   }
 
 
