@@ -10,6 +10,7 @@ public class CoinSpawn : MonoBehaviour
     void Start()
     {
         StartCoroutine(CoinSpawnRoutine());
+        StartCoroutine(CoinsDestroy());
     }
 
     IEnumerator CoinSpawnRoutine()
@@ -20,8 +21,14 @@ public class CoinSpawn : MonoBehaviour
             Instantiate(coinPrefabe, posToSpawn, Quaternion.identity);
             yield return new WaitForSeconds(3.0f);
         }
+
     }
 
-    
+    IEnumerator CoinsDestroy()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(coinPrefabe);
+
+    }
 }   
 
