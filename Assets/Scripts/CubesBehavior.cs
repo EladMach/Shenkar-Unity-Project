@@ -9,7 +9,7 @@ public class CubesBehavior : MonoBehaviour
     private Player player;
     public Transform[] waypoints;
     private int _currentWaypointIndex = 0;
-    private float _speed = 4f;
+    private float _speed = 10f;
     private Rigidbody rb;
 
    
