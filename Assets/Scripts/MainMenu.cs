@@ -36,4 +36,8 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
 }
