@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
 
         PlayerAttack();
 
+        WinSequence();
+
     }
 
 
@@ -154,8 +156,19 @@ public class Player : MonoBehaviour
         {
             audioSource.PlayOneShot(swordSwish);
             animator.SetTrigger("PlayerAttack");
-            
-    }   }
+        }
+
+    }
+
+    public void WinSequence()
+    {
+        if (score == 20f)
+        {
+            Debug.Log("You Win!");
+            SceneManager.LoadScene(2);
+        }
+    }
+
 
 
 }
