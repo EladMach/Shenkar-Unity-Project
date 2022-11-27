@@ -160,14 +160,14 @@ public class Player : MonoBehaviour
 
     }
 
-    public void WinSequence()
-    {
-        if (score == 20f)
-        {
-            Debug.Log("You Win!");
-            SceneManager.LoadScene(2);
-        }
-    }
+    //public void WinSequence()
+    //{
+    //    if (score == 20f)
+    //    {
+    //        Debug.Log("You Win!");
+    //        SceneManager.LoadScene(2);
+    //    }
+    //}
 
 
 
