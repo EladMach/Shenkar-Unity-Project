@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
         PlayerAttack();
 
-        WinSequence();
+        
 
     }
 
