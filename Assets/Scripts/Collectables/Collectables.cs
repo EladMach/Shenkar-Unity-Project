@@ -7,8 +7,12 @@ public class Collectables : MonoBehaviour
 {
 
     public GameObject collectSoundPrefab;
+    public float rotationSpeed = 10f; 
 
-
+    private void Update()
+    {
+        CoinRotation();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +25,8 @@ public class Collectables : MonoBehaviour
         
     }
 
-
-
+    void CoinRotation()
+    {
+        transform.Rotate(new Vector3(0, 10f, 0) * rotationSpeed * Time.deltaTime);
+    }
 }
