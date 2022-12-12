@@ -1440,6 +1440,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1763384068024329855, guid: c67d13f5fd7a2f84cbd5e27b495ccfda,
         type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763384068024329855, guid: c67d13f5fd7a2f84cbd5e27b495ccfda,
+        type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1272224391}

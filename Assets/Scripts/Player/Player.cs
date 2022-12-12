@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         minScore = 0;
+
+        
     }
 
     void Update()
@@ -84,6 +86,7 @@ public class Player : MonoBehaviour
                 TakeDamage(20); 
                 TakeScore(10);
                 percentText.text = currentHealth.ToString() + "%";
+                
     
             }
         }
